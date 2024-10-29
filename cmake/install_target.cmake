@@ -17,3 +17,9 @@ install(EXPORT ${target_name}-targets
     NAMESPACE ${ns}::
     DESTINATION lib/cmake/${ns})
 endfunction()
+
+function(install_cfgpkg ns content)
+    set(config_file "${CMAKE_BINARY_DIR}/${PROJECT_NAME}Config.cmake")
+    file(WRITE "${config_file}" ${content})
+    install(FILES "${config_file}" DESTINATION lib/cmake/${ns})
+endfunction()
